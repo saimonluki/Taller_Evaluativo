@@ -1,6 +1,6 @@
 <?php
+// Página para registrar un nuevo insumo en el inventario.
 session_start();
-// Candado de seguridad
 if(!isset($_SESSION['usuario_activo'])){
     header("Location: ../../login.php");
     exit();

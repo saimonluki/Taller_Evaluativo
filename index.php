@@ -1,6 +1,6 @@
 <?php
+// Página principal del sistema. Requiere sesión activa para mostrar el menú.
 session_start();
-// El candado de seguridad
 if(!isset($_SESSION['usuario_activo'])){
     header("Location: login.php");
     exit();

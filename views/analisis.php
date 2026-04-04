@@ -1,4 +1,5 @@
 <?php
+// Verificamos sesión antes de mostrar la página de análisis.
 session_start();
 if(!isset($_SESSION['usuario_activo'])){
     header("Location: ../login.php");
@@ -10,11 +11,11 @@ require_once '../models/Insumo.php';
 
 $modelo = new Insumo($conn);
 
-// Traemos los datos de la base de datos
+// Obtenemos los datos necesarios para las gráficas.
 $datosArticulos = $modelo->datosPorArticulo();
 $datosAreas = $modelo->datosPorArea();
 
-// Preparamos los datos
+// Convertimos los resultados en arreglos que usa Chart.js.
 $nombresArticulos = [];
 $cantidadesArticulos = [];
 while($row = $datosArticulos->fetch_assoc()) {
@@ -103,28 +104,27 @@ while($row = $datosAreas->fetch_assoc()) {
         const nombresAreas = <?php echo json_encode($nombresAreas); ?>;
         const cantidadesAreas = <?php echo json_encode($cantidadesAreas); ?>;
 
-        // Definimos el color plata (Silver en hexadecimal)
+        // Colores base para los gráficos.
         const colorPlata = '#C0C0C0';
-        // Un plata con 50% de transparencia para el relleno del área
-        const colorPlataTransparente = 'rgba(192, 192, 192, 0.5)'; 
+        const colorPlataTransparente = 'rgba(192, 192, 192, 0.5)';
 
-        // 1. GRÁFICA DE ÁREA (Línea con relleno)
+        // Gráfica de área: muestra la tendencia con relleno suave.
         new Chart(document.getElementById('graficaArea'), {
-            type: 'line', // Sigue siendo line
+            type: 'line',
             data: {
                 labels: nombresArticulos,
                 datasets: [{
                     label: 'Unidades Disponibles',
                     data: cantidadesArticulos,
-                    backgroundColor: colorPlataTransparente, // Relleno plata
-                    borderColor: colorPlata,                 // Borde plata
+                    backgroundColor: colorPlataTransparente,
+                    borderColor: colorPlata,
                     borderWidth: 2,
-                    fill: true // ¡ESTO LA CONVIERTE EN ÁREA!
+                    fill: true
                 }]
             }
         });
 
-        // 2. GRÁFICA DE LÍNEAS (Sin relleno)
+        // 2. GRÁFICA DE LÍNEAS 
         new Chart(document.getElementById('graficaLineas'), {
             type: 'line',
             data: {
@@ -135,7 +135,7 @@ while($row = $datosAreas->fetch_assoc()) {
                     backgroundColor: colorPlata,
                     borderColor: colorPlata,
                     borderWidth: 2,
-                    fill: false // Sin relleno, solo la línea
+                    fill: false 
                 }]
             }
         });
@@ -147,9 +147,9 @@ while($row = $datosAreas->fetch_assoc()) {
                 labels: nombresAreas,
                 datasets: [{
                     data: cantidadesAreas,
-                    backgroundColor: colorPlata, // Todo el pastel es plata
-                    borderColor: '#ffffff',      // Borde blanco para separar las porciones
-                    borderWidth: 3               // Borde un poco más grueso para que se note bien
+                    backgroundColor: colorPlata, 
+                    borderColor: '#ffffff',     
+                    borderWidth: 3               
                 }]
             }
         });

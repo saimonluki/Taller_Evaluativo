@@ -1,13 +1,13 @@
 <?php
+// Clase que maneja los usuarios y la validación de credenciales.
 class Usuario {
     private $conn;
 
-    // Cuando llamemos a esta clase, le pasaremos la conexión a la base de datos
     public function __construct($conexion) {
         $this->conn = $conexion;
     }
 
-    // Esta función busca al usuario usando el Procedimiento Almacenado
+    // Verifica el usuario y la contraseña contra el procedimiento almacenado en la base de datos.
     public function verificarCredenciales($username, $password) {
         $user = $this->conn->real_escape_string($username);
         $pass = $this->conn->real_escape_string($password);

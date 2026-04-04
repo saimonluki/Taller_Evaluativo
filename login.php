@@ -1,6 +1,8 @@
 <?php
+// Iniciamos la sesión para saber si el usuario ya está autenticado.
 session_start();
 if(isset($_SESSION['usuario_activo'])){
+    // Si el usuario ya ingresó, lo enviamos directamente al panel principal.
     header("Location: index.php");
     exit();
 }

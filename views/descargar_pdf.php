@@ -1,16 +1,13 @@
 <?php
+// Página que convierte el inventario de insumos en un PDF descargable.
 session_start();
-// Candado de seguridad
 if(!isset($_SESSION['usuario_activo'])){
     header("Location: ../login.php");
     exit();
 }
 
-// 1. Traemos la conexión y el modelo
 require_once '../config/conexion.php';
 require_once '../models/Insumo.php';
-
-// 2. Incluimos la librería Dompdf que acabas de descargar
 require_once '../assets/dompdf/autoload.inc.php';
 
 // Le decimos a PHP que vamos a usar la clase Dompdf
@@ -20,7 +17,7 @@ use Dompdf\Options;
 $modelo = new Insumo($conn);
 $resultado = $modelo->listar(); 
 
-// 3. Empezamos a armar el diseño (HTML) que irá dentro del PDF
+// Empezamos a armar el diseño (HTML) que irá dentro del PDF
 $html = '
 <!DOCTYPE html>
 <html>
@@ -53,7 +50,7 @@ $html = '
         </thead>
         <tbody>';
 
-// 4. Llenamos la tabla con los datos de la base de datos
+// Llenamos la tabla con los datos de la base de datos
 if ($resultado->num_rows > 0) {
     while($fila = $resultado->fetch_assoc()) {
         $html .= '<tr>
@@ -73,7 +70,7 @@ $html .= '
 </body>
 </html>';
 
-// 5. Configuramos y generamos el PDF
+// Configuramos y generamos el PDF
 $opciones = new Options();
 $opciones->set('isHtml5ParserEnabled', true); // Permitir HTML moderno
 $opciones->set('isRemoteEnabled', true);      // Permitir cargar imágenes si las hubiera

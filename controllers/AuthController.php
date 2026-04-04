@@ -1,10 +1,9 @@
 <?php
+// Controlador que procesa el ingreso del usuario y genera la sesión.
 session_start();
-// Importamos la conexión y el modelo
 require_once '../config/conexion.php';
 require_once '../models/usuario.php';
 
-// Verificamos si se presionó el botón de ingresar
 if (isset($_POST['ingresar'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];

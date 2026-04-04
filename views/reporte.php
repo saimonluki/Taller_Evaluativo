@@ -1,11 +1,11 @@
 <?php
+// Página para generar un reporte HTML imprimible con el inventario de insumos.
 session_start();
 if(!isset($_SESSION['usuario_activo'])){
     header("Location: ../login.php");
     exit();
 }
 
-// 1. Traemos la conexión y el modelo
 require_once '../config/conexion.php';
 require_once '../models/Insumo.php';
 
@@ -33,10 +33,7 @@ $resultado = $modelo->listar(); // Reutilizamos la función que ya teníamos
         .btn-imprimir { background-color: #34495e; color: white; padding: 10px 20px; border: none; font-size: 16px; cursor: pointer; border-radius: 5px; margin-bottom: 20px; }
         .btn-imprimir:hover { background-color: #2c3e50; }
 
-        /* =========================================
-           LA MAGIA DE LA IMPRESIÓN (Para tu sustentación)
-           Todo lo que tenga la clase "no-imprimir" desaparecerá en el papel
-           ========================================= */
+
         @media print {
             .no-imprimir { display: none !important; }
             .menu-navegacion { display: none !important; }

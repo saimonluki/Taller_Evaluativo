@@ -1,18 +1,18 @@
 <?php
-// 1. Definimos las variables de conexión
+// Configuración de acceso a la base de datos. Este archivo se incluye desde los modelos y controladores.
 $host = "localhost";
-$usuario = "root";       
-$password = "";          
+$usuario = "root";
+$password = "";
 $base_datos = "hospital_pro";
 
-// 2. Creamos la conexión usando mysqli (¡La forma más fácil de sustentar!)
+// Establecemos la conexión usando la extensión mysqli.
 $conn = new mysqli($host, $usuario, $password, $base_datos);
 
-// 3. Verificamos si hubo algún error al conectar
+// Detenemos el script si la conexión falla.
 if ($conn->connect_error) {
     die("Ups, algo salió mal con la conexión: " . $conn->connect_error);
 }
 
-// 4. Configuramos el tipo de caracteres para evitar problemas con tildes
+// Usamos UTF-8 para que el sistema maneje bien los acentos y caracteres especiales.
 $conn->set_charset("utf8");
 ?>

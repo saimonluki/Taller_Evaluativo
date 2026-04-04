@@ -1,4 +1,5 @@
 <?php
+// Modelo que maneja los insumos de aseo y las consultas a la base de datos.
 class Insumo {
     private $conn;
 
@@ -6,14 +7,13 @@ class Insumo {
         $this->conn = $conexion;
     }
 
-    // Función para guardar un nuevo insumo
+    // Registra un nuevo insumo usando el procedimiento almacenado.
     public function registrar($articulo, $cantidad, $area_uso) {
-    // Ya no escribimos el INSERT, sino que LLAMAMOS al procedimiento
-    $sql = "CALL sp_insertar_insumo('$articulo', $cantidad, '$area_uso')";
-    return $this->conn->query($sql); 
-}
+        $sql = "CALL sp_insertar_insumo('$articulo', $cantidad, '$area_uso')";
+        return $this->conn->query($sql);
+    }
 
-    // Función para obtener todos los insumos y mostrarlos en la tabla
+    // Obtiene todos los insumos para mostrar en el listado.
     public function listar() {
         $sql = "SELECT * FROM insumos_aseo";
         return $this->conn->query($sql);

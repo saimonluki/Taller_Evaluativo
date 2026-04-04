@@ -1,11 +1,11 @@
 <?php
+// Página que muestra la tabla con todos los insumos registrados.
 session_start();
 if(!isset($_SESSION['usuario_activo'])){
     header("Location: ../../login.php");
     exit();
 }
 
-// Requerimos la conexión y el modelo para traer los datos
 require_once '../../config/conexion.php';
 require_once '../../models/Insumo.php';
 

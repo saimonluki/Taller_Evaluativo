@@ -1,13 +1,10 @@
 <?php
-// Importamos la conexión y el modelo
+// Controlador responsable de las operaciones CRUD sobre el módulo de insumos.
 require_once '../config/conexion.php';
 require_once '../models/insumo.php';
 
-// ==========================================
-// 1. ACCIÓN PARA GUARDAR
-// ==========================================
+// Guardar un nuevo insumo desde el formulario de registro.
 if (isset($_GET['action']) && $_GET['action'] == 'guardar') {
-    
     $articulo = $_POST['articulo'];
     $cantidad = $_POST['cantidad'];
     $area_uso = $_POST['area_uso'];
@@ -23,11 +20,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'guardar') {
     }
 }
 
-// ==========================================
-// 2. ACCIÓN PARA ELIMINAR
-// ==========================================
+
 if (isset($_GET['action']) && $_GET['action'] == 'eliminar') {
-    
     // Recibimos el ID que mandó el botón desde listado.php
     $id = $_GET['id'];
     
