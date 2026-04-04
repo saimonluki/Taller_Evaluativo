@@ -1,0 +1,297 @@
+/* =========================================
+   1. CONFIGURACIÓN BASE
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #343a40;
+    line-height: 1.6;
+}
+
+/* Clase especial para centrar el Login */
+.body-login {
+    background-color: #e3f2fd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-caja {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    width: 350px;
+    text-align: center;
+}
+
+.icono-hospital {
+    font-size: 50px;
+    color: #007bff;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.login-caja h2 {
+    margin-bottom: 20px;
+    color: #343a40;
+}
+
+/* =========================================
+   2. MENÚ DE NAVEGACIÓN (MVC)
+   ========================================= */
+.menu-navegacion {
+    background-color: #007bff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.menu-principal {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.menu-principal > li {
+    position: relative;
+}
+
+.menu-principal a {
+    color: #fff;
+    text-decoration: none;
+    padding: 18px 25px;
+    display: block;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.menu-principal a:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+/* Submenús */
+.submenu {
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #17a2b8;
+    min-width: 200px;
+    display: none;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+.con-submenu:hover .submenu {
+    display: block;
+}
+
+.submenu li a {
+    padding: 12px 20px;
+    border-bottom: 1px solid #007bff;
+}
+
+.submenu li a:hover {
+    padding-left: 30px;
+    background-color: #007bff;
+}
+
+/* =========================================
+   3. CONTENEDORES Y TARJETAS
+   ========================================= */
+.contenido {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.contenido h1 {
+    margin-bottom: 10px;
+    color: #343a40;
+}
+
+/* Tarjetas de Formularios y Tablas */
+.formulario-caja, .tabla-contenedor, .grafica-caja {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    margin: 20px auto;
+}
+
+.formulario-caja {
+    width: 100%;
+    max-width: 450px;
+    text-align: left;
+}
+
+/* =========================================
+   4. FORMULARIOS E INPUTS
+   ========================================= */
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #444;
+}
+
+input[type="text"], 
+input[type="password"], 
+input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.3);
+}
+
+/* =========================================
+   5. BOTONES
+   ========================================= */
+.btn-guardar, .btn-login {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.btn-login { background-color: #007bff; }
+.btn-login:hover { background-color: #0056b3; transform: translateY(-2px); }
+
+.btn-guardar { background-color: #28a745; }
+.btn-guardar:hover { background-color: #1e7e34; transform: translateY(-2px); }
+
+/* Botones de acción en tabla */
+.btn-editar, .btn-borrar {
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+    margin: 0 5px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-editar { background-color: #17a2b8; }
+.btn-borrar { background-color: #dc3545; }
+
+/* =========================================
+   6. TABLAS
+   ========================================= */
+.tabla-contenedor {
+    width: 95%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+th {
+    background-color: #f8f9fa;
+    color: #2c3e50;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+tr:hover { background-color: #fcfcfc; }
+
+/* =========================================
+   7. GRÁFICAS
+   ========================================= */
+.contenedor-graficas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.grafica-caja {
+    width: 45%;
+    min-width: 300px;
+}
+
+.grafica-caja.completa {
+    width: 92%;
+}
+
+/* =========================================
+   8. ESTILOS ESPECÍFICOS POR PÁGINA
+   ========================================= */
+
+/* Página de Login - Toque azul calming */
+.page-login .icono-hospital {
+    color: #007bff;
+}
+
+.page-login .login-caja {
+    border-top: 4px solid #007bff;
+}
+
+/* Página de Dashboard - Toque verde para supplies */
+.page-dashboard .contenido h1 {
+    color: #28a745;
+}
+
+.page-dashboard .formulario-caja, .page-dashboard .grafica-caja {
+    border-top: 4px solid #28a745;
+}
+
+/* Página de Reportes - Toque gris formal */
+.page-reports .contenido h1 {
+    color: #6c757d;
+}
+
+.page-reports .formulario-caja, .page-reports .tabla-contenedor {
+    border-top: 4px solid #6c757d;
+}
+
+/* Páginas de Insumos - Toque teal para inventory */
+.page-insumos .contenido h1 {
+    color: #17a2b8;
+}
+
+.page-insumos .formulario-caja, .page-insumos .tabla-contenedor {
+    border-top: 4px solid #17a2b8;
+}
+
+.page-insumos .btn-editar {
+    background-color: #17a2b8;
+}
+
+.page-insumos .btn-editar:hover {
+    background-color: #117a8b;
+}
