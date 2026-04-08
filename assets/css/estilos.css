@@ -1,65 +1,153 @@
 /* =========================================
-   1. CONFIGURACIÓN BASE
+   TALLER LILI — ESTILOS MODERNOS
+   Paleta: Plata / Silver · Diseño refinado
    ========================================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Arial, sans-serif;
-}
 
-body {
-    background-color: #f8f9fa;
-    color: #343a40;
-    line-height: 1.6;
-}
+/* ── Fuente personalizada ── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display&display=swap');
 
-/* Clase especial para centrar el Login */
-.body-login {
-    background-color: #e3f2fd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
+/* ── Variables de color (gama plata / silver) ── */
+:root {
+    --silver-50:  #f8f9fa;
+    --silver-100: #f1f3f5;
+    --silver-200: #e9ecef;
+    --silver-300: #dee2e6;
+    --silver-400: #ced4da;
+    --silver-500: #adb5bd;   /* plata base */
+    --silver-600: #868e96;
+    --silver-700: #495057;
+    --silver-800: #343a40;
+    --silver-900: #212529;
 
-.login-caja {
-    background: white;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-    width: 350px;
-    text-align: center;
-}
+    /* Acento oscuro para botones principales */
+    --accent:        #37474f;
+    --accent-hover:  #263238;
+    --accent-light:  #546e7a;
 
-.icono-hospital {
-    font-size: 50px;
-    color: #007bff;
-    margin-bottom: 15px;
-    display: block;
-}
+    /* Acento de éxito (verde apagado, armónico) */
+    --success:       #4a7c59;
+    --success-hover: #3a6347;
 
-.login-caja h2 {
-    margin-bottom: 20px;
-    color: #343a40;
+    /* Acento de peligro */
+    --danger:        #b5473a;
+    --danger-hover:  #943b30;
+
+    /* Acento de info */
+    --info:          #4a7fa5;
+    --info-hover:    #3a6585;
+
+    --shadow-sm:  0 2px  8px rgba(0,0,0,.06);
+    --shadow-md:  0 6px 20px rgba(0,0,0,.09);
+    --shadow-lg:  0 12px 35px rgba(0,0,0,.13);
+    --radius-sm:  8px;
+    --radius-md:  12px;
+    --radius-lg:  18px;
+
+    --font-body:    'DM Sans', 'Segoe UI', sans-serif;
+    --font-display: 'DM Serif Display', Georgia, serif;
 }
 
 /* =========================================
-   2. MENÚ DE NAVEGACIÓN (MVC)
+   1. CONFIGURACIÓN BASE
+   ========================================= */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--silver-100);
+    color: var(--silver-800);
+    line-height: 1.65;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── Fondo con textura sutil ── */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 20% 80%, rgba(173,181,189,.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(134,142,150,.10) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* =========================================
+   2. LOGIN
+   ========================================= */
+.body-login {
+    background: linear-gradient(135deg, var(--silver-200) 0%, var(--silver-300) 50%, var(--silver-400) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.login-caja {
+    background: #ffffff;
+    padding: 48px 44px 44px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg), 0 0 0 1px rgba(0,0,0,.04);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Barra decorativa superior */
+.login-caja::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--silver-400), var(--silver-600), var(--silver-400));
+}
+
+.icono-hospital {
+    font-size: 48px;
+    color: var(--accent);
+    margin-bottom: 18px;
+    display: block;
+    filter: drop-shadow(0 2px 6px rgba(55,71,79,.2));
+}
+
+.login-caja h2 {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: var(--silver-800);
+    margin-bottom: 28px;
+    letter-spacing: -.3px;
+}
+
+/* =========================================
+   3. MENÚ DE NAVEGACIÓN
    ========================================= */
 .menu-navegacion {
-    background-color: #007bff;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    background: linear-gradient(135deg, var(--silver-800) 0%, var(--silver-700) 100%);
+    box-shadow: 0 2px 12px rgba(0,0,0,.18);
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 2px solid var(--silver-600);
 }
 
 .menu-principal {
     list-style: none;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .menu-principal > li {
@@ -67,17 +155,21 @@ body {
 }
 
 .menu-principal a {
-    color: #fff;
+    color: var(--silver-300);
     text-decoration: none;
-    padding: 18px 25px;
-    display: block;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-weight: 500;
-    transition: 0.3s;
+    font-size: 14px;
+    letter-spacing: .3px;
+    transition: color .25s, background .25s;
 }
 
 .menu-principal a:hover {
-    background-color: #0056b3;
-    color: #fff;
+    background-color: rgba(255,255,255,.08);
+    color: #ffffff;
 }
 
 /* Submenús */
@@ -86,126 +178,255 @@ body {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #17a2b8;
+    background: var(--silver-800);
     min-width: 200px;
     display: none;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    box-shadow: var(--shadow-md);
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    border-top: 2px solid var(--silver-500);
+    overflow: hidden;
 }
 
-.con-submenu:hover .submenu {
-    display: block;
-}
+.con-submenu:hover .submenu { display: block; }
 
 .submenu li a {
     padding: 12px 20px;
-    border-bottom: 1px solid #007bff;
+    font-size: 13.5px;
+    color: var(--silver-400);
+    border-bottom: 1px solid rgba(255,255,255,.05);
+    transition: padding-left .2s, color .2s, background .2s;
 }
 
 .submenu li a:hover {
-    padding-left: 30px;
-    background-color: #007bff;
+    padding-left: 28px;
+    color: #ffffff;
+    background: rgba(255,255,255,.07);
 }
 
 /* =========================================
-   3. CONTENEDORES Y TARJETAS
+   4. CONTENEDORES Y TARJETAS
    ========================================= */
 .contenido {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 44px 24px;
     text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
 .contenido h1 {
-    margin-bottom: 10px;
-    color: #343a40;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--silver-800);
+    margin-bottom: 8px;
+    letter-spacing: -.4px;
 }
 
-/* Tarjetas de Formularios y Tablas */
-.formulario-caja, .tabla-contenedor, .grafica-caja {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    margin: 20px auto;
+.contenido > p {
+    color: var(--silver-600);
+    font-size: 15px;
+    margin-bottom: 28px;
+}
+
+/* Tarjetas */
+.formulario-caja,
+.tabla-contenedor,
+.grafica-caja {
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    margin: 24px auto;
+    border: 1px solid var(--silver-200);
+    transition: box-shadow .3s;
+}
+
+.formulario-caja:hover,
+.tabla-contenedor:hover,
+.grafica-caja:hover {
+    box-shadow: var(--shadow-lg);
 }
 
 .formulario-caja {
+    padding: 36px 40px;
     width: 100%;
-    max-width: 450px;
+    max-width: 480px;
     text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Barra lateral decorativa */
+.formulario-caja::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--silver-400), var(--silver-600));
+    border-radius: 4px 0 0 4px;
 }
 
 /* =========================================
-   4. FORMULARIOS E INPUTS
+   5. FORMULARIOS E INPUTS
    ========================================= */
 label {
     display: block;
-    margin-top: 15px;
+    margin-top: 18px;
     font-weight: 600;
-    color: #444;
+    font-size: 13px;
+    color: var(--silver-700);
+    text-transform: uppercase;
+    letter-spacing: .6px;
 }
 
-input[type="text"], 
-input[type="password"], 
+input[type="text"],
+input[type="password"],
 input[type="number"] {
     width: 100%;
-    padding: 12px;
-    margin-top: 5px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 16px;
+    padding: 11px 14px;
+    margin-top: 6px;
+    border: 1.5px solid var(--silver-300);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--silver-800);
+    background: var(--silver-50);
+    transition: border-color .25s, box-shadow .25s, background .25s;
 }
 
-input:focus {
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus {
     outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0,123,255,0.3);
+    border-color: var(--silver-500);
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(173,181,189,.25);
 }
 
+input::placeholder { color: var(--silver-400); }
+
 /* =========================================
-   5. BOTONES
+   6. BOTONES
    ========================================= */
-.btn-guardar, .btn-login {
+
+/* ── Botones principales ── */
+.btn-guardar,
+.btn-login {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     width: 100%;
-    padding: 14px;
+    padding: 14px 24px;
     border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .3px;
+    color: #ffffff;
+    margin-top: 24px;
+    transition: background .25s, transform .18s, box-shadow .25s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Shimmer effect en hover */
+.btn-guardar::after,
+.btn-login::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,.18), transparent);
+    transition: left .4s;
+}
+
+.btn-guardar:hover::after,
+.btn-login:hover::after { left: 150%; }
+
+.btn-login {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+    box-shadow: 0 4px 14px rgba(55,71,79,.3);
+}
+
+.btn-login:hover {
+    background: linear-gradient(135deg, var(--accent-hover) 0%, var(--accent) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(55,71,79,.4);
+}
+
+.btn-login:active { transform: translateY(0); }
+
+.btn-guardar {
+    background: linear-gradient(135deg, var(--success) 0%, #5a9a6e 100%);
+    box-shadow: 0 4px 14px rgba(74,124,89,.3);
+}
+
+.btn-guardar:hover {
+    background: linear-gradient(135deg, var(--success-hover) 0%, var(--success) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(74,124,89,.4);
+}
+
+.btn-guardar:active { transform: translateY(0); }
+
+/* ── Botones de acción en tabla ── */
+.btn-editar,
+.btn-borrar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 14px;
     border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
-    margin-top: 20px;
-    transition: 0.3s;
-}
-
-.btn-login { background-color: #007bff; }
-.btn-login:hover { background-color: #0056b3; transform: translateY(-2px); }
-
-.btn-guardar { background-color: #28a745; }
-.btn-guardar:hover { background-color: #1e7e34; transform: translateY(-2px); }
-
-/* Botones de acción en tabla */
-.btn-editar, .btn-borrar {
-    padding: 8px 12px;
-    border-radius: 4px;
-    color: white;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: #ffffff;
     text-decoration: none;
-    margin: 0 5px;
-    font-size: 14px;
     border: none;
     cursor: pointer;
+    margin: 0 4px;
+    transition: background .2s, transform .15s, box-shadow .2s;
+    gap: 5px;
 }
 
-.btn-editar { background-color: #17a2b8; }
-.btn-borrar { background-color: #dc3545; }
+.btn-editar {
+    background: var(--info);
+    box-shadow: 0 2px 8px rgba(74,127,165,.25);
+}
+
+.btn-editar:hover {
+    background: var(--info-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(74,127,165,.35);
+}
+
+.btn-borrar {
+    background: var(--danger);
+    box-shadow: 0 2px 8px rgba(181,71,58,.25);
+}
+
+.btn-borrar:hover {
+    background: var(--danger-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(181,71,58,.35);
+}
+
+.btn-editar:active,
+.btn-borrar:active { transform: translateY(0); }
 
 /* =========================================
-   6. TABLAS
+   7. TABLAS
    ========================================= */
 .tabla-contenedor {
     width: 95%;
     overflow-x: auto;
+    padding: 0;
+    border-radius: var(--radius-md);
 }
 
 table {
@@ -213,35 +434,77 @@ table {
     border-collapse: collapse;
 }
 
-th, td {
-    padding: 15px;
-    border-bottom: 1px solid #eee;
-    text-align: center;
+thead tr {
+    background: linear-gradient(135deg, var(--silver-800) 0%, var(--silver-700) 100%);
 }
 
 th {
-    background-color: #f8f9fa;
-    color: #2c3e50;
-    font-weight: bold;
+    padding: 14px 16px;
+    color: var(--silver-300);
+    font-weight: 600;
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 11.5px;
+    letter-spacing: .8px;
+    text-align: center;
+    border: none;
 }
 
-tr:hover { background-color: #fcfcfc; }
+th:first-child { border-radius: var(--radius-md) 0 0 0; }
+th:last-child  { border-radius: 0 var(--radius-md) 0 0; }
+
+td {
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--silver-200);
+    text-align: center;
+    font-size: 14.5px;
+    color: var(--silver-700);
+    vertical-align: middle;
+}
+
+tbody tr {
+    transition: background .15s;
+}
+
+tbody tr:hover {
+    background-color: var(--silver-50);
+}
+
+tbody tr:last-child td { border-bottom: none; }
 
 /* =========================================
-   7. GRÁFICAS
+   8. GRÁFICAS
    ========================================= */
 .contenedor-graficas {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 24px;
+    margin-top: 24px;
 }
 
 .grafica-caja {
+    padding: 28px;
     width: 45%;
     min-width: 300px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.grafica-caja::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--silver-400), var(--silver-600), var(--silver-400));
+}
+
+.grafica-caja h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: var(--silver-700);
+    margin-bottom: 16px;
 }
 
 .grafica-caja.completa {
@@ -249,49 +512,104 @@ tr:hover { background-color: #fcfcfc; }
 }
 
 /* =========================================
-   8. ESTILOS ESPECÍFICOS POR PÁGINA
+   9. ESTILOS DE BIENVENIDA (index)
+   ========================================= */
+.welcome-icons {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 36px;
+    opacity: .85;
+}
+
+.welcome-icons i {
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,.1));
+    transition: transform .3s;
+}
+
+.welcome-icons i:hover { transform: translateY(-6px) scale(1.08); }
+
+/* =========================================
+   10. ESTILOS ESPECÍFICOS POR PÁGINA
    ========================================= */
 
-/* Página de Login - Toque azul calming */
-.page-login .icono-hospital {
-    color: #007bff;
+/* Login */
+.page-login .login-caja::before {
+    background: linear-gradient(90deg, var(--silver-400), var(--silver-600), var(--silver-400));
 }
 
-.page-login .login-caja {
-    border-top: 4px solid #007bff;
+/* Dashboard */
+.page-dashboard .contenido h1 { color: var(--silver-800); }
+.page-dashboard .formulario-caja::before,
+.page-dashboard .grafica-caja::before {
+    background: linear-gradient(90deg, var(--success), #6ab07e, var(--success));
 }
 
-/* Página de Dashboard - Toque verde para supplies */
-.page-dashboard .contenido h1 {
-    color: #28a745;
+/* Reportes */
+.page-reports .contenido h1 { color: var(--silver-700); }
+.page-reports .tabla-contenedor::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--silver-500), var(--silver-700), var(--silver-500));
 }
 
-.page-dashboard .formulario-caja, .page-dashboard .grafica-caja {
-    border-top: 4px solid #28a745;
+/* Insumos */
+.page-insumos .contenido h1 { color: var(--silver-800); }
+.page-insumos .formulario-caja::before,
+.page-insumos .tabla-contenedor::before {
+    background: linear-gradient(90deg, var(--info), #6aaad4, var(--info));
 }
 
-/* Página de Reportes - Toque gris formal */
-.page-reports .contenido h1 {
-    color: #6c757d;
+/* =========================================
+   11. RESPONSIVE
+   ========================================= */
+@media (max-width: 768px) {
+    .menu-principal {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .submenu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    .con-submenu:hover .submenu { display: block; }
+
+    .formulario-caja {
+        padding: 28px 24px;
+        max-width: 100%;
+    }
+
+    .grafica-caja {
+        width: 100% !important;
+        min-width: unset;
+    }
+
+    .tabla-contenedor {
+        width: 100%;
+    }
+
+    .contenido {
+        padding: 28px 16px;
+    }
+
+    .contenido h1 { font-size: 1.5rem; }
 }
 
-.page-reports .formulario-caja, .page-reports .tabla-contenedor {
-    border-top: 4px solid #6c757d;
-}
+@media (max-width: 480px) {
+    .login-caja {
+        padding: 36px 24px 32px;
+    }
 
-/* Páginas de Insumos - Toque teal para inventory */
-.page-insumos .contenido h1 {
-    color: #17a2b8;
-}
-
-.page-insumos .formulario-caja, .page-insumos .tabla-contenedor {
-    border-top: 4px solid #17a2b8;
-}
-
-.page-insumos .btn-editar {
-    background-color: #17a2b8;
-}
-
-.page-insumos .btn-editar:hover {
-    background-color: #117a8b;
+    .btn-editar,
+    .btn-borrar {
+        padding: 6px 10px;
+        font-size: 12px;
+        margin: 2px;
+    }
 }

@@ -35,28 +35,18 @@ while($row = $datosAreas->fetch_assoc()) {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Análisis de Insumos</title>
     <link rel="stylesheet" href="../assets/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/estilos.css">
-    <style>
-        .contenedor-graficas {
-            display: flex; flex-wrap: wrap; justify-content: space-around; margin-top: 20px;
-        }
-        .grafica-caja {
-            background: white; padding: 20px; border-radius: 10px; 
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1); width: 45%; margin-bottom: 20px;
-            text-align: center;
-        }
-        .grafica-caja.completa { width: 95%; } 
-    </style>
 </head>
-<body>
+<body class="page-reports">
 
     <nav class="menu-navegacion">
         <ul class="menu-principal">
             <li><a href="../index.php"><i class="fa-solid fa-house"></i> Inicio</a></li>
             <li class="con-submenu">
-                <a href="#"><i class="fa-solid fa-pen-to-square"></i> Gestión</a>
+                <a href="#"><i class="fa-solid fa-pen-to-square"></i> Gestión <i class="fa-solid fa-chevron-down" style="font-size:10px;opacity:.7;"></i></a>
                 <ul class="submenu">
                     <li><a href="insumos/agregar.php">Agregar Nuevo</a></li>
                     <li><a href="insumos/listado.php">Ver Listado</a></li>
@@ -64,19 +54,19 @@ while($row = $datosAreas->fetch_assoc()) {
             </li>
             <li><a href="analisis.php"><i class="fa-solid fa-chart-pie"></i> Análisis</a></li>
             <li class="con-submenu">
-                <a href="#"><i class="fa-solid fa-file-lines"></i> Documentos</a>
+                <a href="#"><i class="fa-solid fa-file-lines"></i> Documentos <i class="fa-solid fa-chevron-down" style="font-size:10px;opacity:.7;"></i></a>
                 <ul class="submenu">
                     <li><a href="reporte.php">Reporte HTML</a></li>
                     <li><a href="descargar_pdf.php">Descargar PDF</a></li>
                 </ul>
             </li>
-            <li><a href="../logout.php" style="color: #ff6b6b;"><i class="fa-solid fa-right-from-bracket"></i> Salir</a></li>
+            <li><a href="../logout.php" style="color: #e57373;"><i class="fa-solid fa-right-from-bracket"></i> Salir</a></li>
         </ul>
     </nav>
 
     <main class="contenido">
         <h1>Análisis Estadístico</h1>
-        <p>Visualización del inventario de aseo.</p>
+        <p>Visualización del inventario de aseo por artículo y área.</p>
 
         <div class="contenedor-graficas">
             <div class="grafica-caja">
